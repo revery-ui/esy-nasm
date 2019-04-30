@@ -1,0 +1,14 @@
+{
+  "name": "esy-nasm",
+  "version": "2.14.0200",
+  "description": "Netwide assembler packaged for esy",
+  "esy": {
+    "buildsInSource": true,
+    "build": [
+      "find ./ -exec touch -t 200905010101 {} +",
+      ["bash", "-c", "#{os == 'windows' ? 'AR=x86_64-w64-mingw32-ar.exe CC=x86_64-w64-mingw32-gcc.exe ./configure --prefix=$cur__install': './configure --prefix=$cur__install'}"],
+      "make",
+      "make install"
+    ]
+  }
+}
