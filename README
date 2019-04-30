@@ -1,4 +1,14 @@
-              NASM, the Netwide Assembler.
+# Packager Notes
+
+TODO:
+- On MacOS, nasm does not build because of a GCC issue (libltp_plugin.so not found)
+- On Windows, linker complains file truncated inside cygwin
+We install pre-bundled binaries for these platforms
+
+# Original README
+
+
+NASM, the Netwide Assembler.
 
 Many many developers all over the net respect NASM for what it is
 - a widespread (thus netwide), portable (thus netwide!), very
