@@ -15,23 +15,23 @@ jobs:
       displayName: 'Installing deps'
   - script: esy i
     displayName: 'esy i'
-  - script: esy x pkg-config --libs libjpeg
+  - script: esy x nasm --version
     displayName: 'Build and Dry run'
-  # - bash: |
-  #     PKG=~/foo/esy-pkgconfig
-  #     APP=~/foo/test-app
-  #     mkdir -p $PKG
-  #     mkdir -p $APP
-  #     cp -R * $PKG/
-  #     cp test-app.json $APP/package.json
-
-  # - ${{ if eq(parameters.sign, 'false') }}:
-  #     - bash: |
-  #         cd ~/foo/test-app/
-  #         esy
+  - ${{ if eq(parameters.sign, 'false') }}:
+      - bash: |
+          cat >foo.s <<EOF
+          mov eax, 0
+          mov ebx, 0
+          int 0x80
+          EOF
+          esy x nasm foo.s
       
-  # - ${{ if eq(parameters.sign, 'true') }}:
-  #     - bash: |
-  #         cd ~/foo/test-app/
-  #         C:/npm/prefix/node_modules/esy/_build/default/bin/esy.exe
+  - ${{ if eq(parameters.sign, 'true') }}:
+      - bash: |
+          cat >foo.s <<EOF
+          mov eax, 0
+          mov ebx, 0
+          int 0x80
+          EOF
+          C:/npm/prefix/node_modules/esy/_build/default/bin/esy.exe x nasm foo.s
       
