@@ -1,5 +1,7 @@
 # Packager Notes
 
+[![Build Status](https://dev.azure.com/prometheansacrifice/esy-nasm/_apis/build/status/prometheansacrifice.esy-nasm?branchName=master)](https://dev.azure.com/prometheansacrifice/esy-nasm/_build/latest?definitionId=19&branchName=master)
+
 TODO:
 - On MacOS, nasm does not build because of a GCC issue (libltp_plugin.so not found)
 - On Windows, linker complains file truncated inside cygwin
