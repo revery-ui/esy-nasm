@@ -38,8 +38,11 @@ case $OS in
         cd ../
         ;;
     linux)
-        ./configure $args
-        make
-        make install
+        # Building from source fails on CentOS, so we'll assume it's available
+        if ! [ -x "$(command -v nasm)" ]; then
+            echo 'Error: nasm is not installed' >&2
+            exit 1
+        fi
+        ;;
 esac
 
